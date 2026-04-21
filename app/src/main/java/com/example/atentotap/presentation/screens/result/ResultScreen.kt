@@ -12,17 +12,27 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.example.atentotap.R
+import com.example.atentotap.domain.model.Winner
 
 @Composable
 fun ResultScreen(
-    winnerText: String,
-    scoreText: String,
+    winner: Winner,
+    player1Score: Int,
+    player2Score: Int,
     onPlayAgain: () -> Unit,
     onBackToMenu: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val winnerText = when (winner) {
+        Winner.PLAYER_1 -> stringResource(id = R.string.result_winner_player_1)
+        Winner.PLAYER_2 -> stringResource(id = R.string.result_winner_player_2)
+        Winner.DRAW -> stringResource(id = R.string.result_draw)
+    }
+
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -36,7 +46,7 @@ fun ResultScreen(
             textAlign = TextAlign.Center,
         )
         Text(
-            text = scoreText,
+            text = stringResource(id = R.string.result_final_score, player1Score, player2Score),
             style = MaterialTheme.typography.titleLarge,
             modifier = Modifier.padding(top = 16.dp, bottom = 28.dp),
         )
@@ -45,7 +55,7 @@ fun ResultScreen(
             onClick = onPlayAgain,
             modifier = Modifier.fillMaxWidth(),
         ) {
-            Text("Play again")
+            Text(text = stringResource(id = R.string.result_play_again))
         }
 
         OutlinedButton(
@@ -54,7 +64,7 @@ fun ResultScreen(
                 .fillMaxWidth()
                 .padding(top = 10.dp),
         ) {
-            Text("Back to menu")
+            Text(text = stringResource(id = R.string.result_back_to_menu))
         }
     }
 }

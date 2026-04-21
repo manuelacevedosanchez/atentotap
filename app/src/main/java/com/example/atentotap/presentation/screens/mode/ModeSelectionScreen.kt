@@ -17,7 +17,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.atentotap.R
 
 enum class ModeTypeUi {
     SCORE,
@@ -40,7 +42,8 @@ fun ModeSelectionScreen(
         listOf(30, 60, 90)
     }
 
-    val selectedValue = if (selectedMode == ModeTypeUi.SCORE) selectedScoreTarget else selectedTimeDuration
+    val selectedValue =
+        if (selectedMode == ModeTypeUi.SCORE) selectedScoreTarget else selectedTimeDuration
 
     Column(
         modifier = modifier
@@ -49,18 +52,18 @@ fun ModeSelectionScreen(
         verticalArrangement = Arrangement.spacedBy(20.dp),
     ) {
         Text(
-            text = "Game Mode",
+            text = stringResource(id = R.string.mode_title),
             style = MaterialTheme.typography.headlineMedium,
         )
 
         Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
             ToggleButton(
-                title = "Score",
+                title = stringResource(id = R.string.mode_score),
                 selected = selectedMode == ModeTypeUi.SCORE,
                 onClick = { selectedMode = ModeTypeUi.SCORE },
             )
             ToggleButton(
-                title = "Time",
+                title = stringResource(id = R.string.mode_time),
                 selected = selectedMode == ModeTypeUi.TIME,
                 onClick = { selectedMode = ModeTypeUi.TIME },
             )
@@ -68,9 +71,9 @@ fun ModeSelectionScreen(
 
         Text(
             text = if (selectedMode == ModeTypeUi.SCORE) {
-                "Target score"
+                stringResource(id = R.string.mode_target_score)
             } else {
-                "Match duration"
+                stringResource(id = R.string.mode_match_duration)
             },
             style = MaterialTheme.typography.titleMedium,
         )
@@ -78,7 +81,11 @@ fun ModeSelectionScreen(
         Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
             options.forEach { value ->
                 ToggleButton(
-                    title = if (selectedMode == ModeTypeUi.SCORE) "$value" else "${value}s",
+                    title = if (selectedMode == ModeTypeUi.SCORE) {
+                        value.toString()
+                    } else {
+                        stringResource(id = R.string.common_seconds_short, value)
+                    },
                     selected = selectedValue == value,
                     onClick = {
                         if (selectedMode == ModeTypeUi.SCORE) {
@@ -92,7 +99,7 @@ fun ModeSelectionScreen(
         }
 
         Text(
-            text = "Symbols per side: 6",
+            text = stringResource(id = R.string.mode_symbols_per_side, 6),
             style = MaterialTheme.typography.bodyLarge,
         )
 
@@ -100,14 +107,14 @@ fun ModeSelectionScreen(
             onClick = { onStartMatch(selectedMode, selectedValue) },
             modifier = Modifier.fillMaxWidth(),
         ) {
-            Text("Start match")
+            Text(text = stringResource(id = R.string.mode_start_match))
         }
 
         OutlinedButton(
             onClick = onBackClick,
             modifier = Modifier.fillMaxWidth(),
         ) {
-            Text("Back")
+            Text(text = stringResource(id = R.string.common_back))
         }
     }
 }

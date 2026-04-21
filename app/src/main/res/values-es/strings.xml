@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">Atentotap</string>
+    <string name="menu_title">AtentoTap</string>
+    <string name="menu_subtitle">Encuentra el símbolo compartido antes que tu rival.</string>
+    <string name="menu_play">Jugar</string>
+    <string name="menu_how_to_play">Cómo jugar</string>
+
+    <string name="mode_title">Modo de juego</string>
+    <string name="mode_score">Puntuación</string>
+    <string name="mode_time">Tiempo</string>
+    <string name="mode_target_score">Puntuación objetivo</string>
+    <string name="mode_match_duration">Duración de la partida</string>
+    <string name="mode_symbols_per_side">Símbolos por zona: %1$d</string>
+    <string name="mode_start_match">Iniciar partida</string>
+
+    <string name="how_to_title">Cómo jugar</string>
+    <string name="how_to_rules">1) La pantalla se divide en dos mitades.\n2) Arriba está el Jugador 1 y abajo el Jugador 2.\n3) Cada mitad tiene 6 símbolos.\n4) Exactamente un símbolo aparece en ambas mitades.\n5) Toca primero el símbolo compartido en tu propia zona para puntuar.</string>
+    <string name="how_to_modes">En modo Puntuación, gana quien llegue antes al objetivo. En modo Tiempo, gana quien tenga más puntos cuando se acabe el tiempo.</string>
+
+    <string name="game_player_score">J%1$d: %2$d</string>
+    <string name="game_player_zone">Jugador %1$d</string>
+    <string name="game_target_score">Objetivo: %1$d</string>
+    <string name="game_time">Tiempo: %1$s</string>
+    <string name="game_round_locked">Ronda bloqueada</string>
+
+    <string name="result_winner_player_1">Gana Jugador 1</string>
+    <string name="result_winner_player_2">Gana Jugador 2</string>
+    <string name="result_draw">Empate</string>
+    <string name="result_final_score">Puntuación final: %1$d - %2$d</string>
+    <string name="result_play_again">Jugar de nuevo</string>
+    <string name="result_back_to_menu">Volver al menú</string>
+
+    <string name="common_back">Volver</string>
+    <string name="common_seconds_short">%1$ds</string>
+
+    <string name="debug_language_title">Idioma de depuración</string>
+    <string name="debug_language_en">Inglés</string>
+    <string name="debug_language_es">Español</string>
+</resources>
+
+
+
+
+

@@ -22,6 +22,13 @@ AtentoTap is a local 2-player reaction game built with Kotlin and Jetpack Compos
 - Navigation Compose
 - ViewModel + StateFlow
 
+## Localization
+
+- Default language resources are in `app/src/main/res/values/strings.xml` (English).
+- Spanish resources are in `app/src/main/res/values-es/strings.xml`.
+- A quick EN/ES language switcher is available in **debug builds only** from the main menu.
+- The selected debug language is persisted locally and restored on app start in debug builds.
+
 ## Project Structure
 
 - `app/src/main/java/com/example/atentotap/domain` - Game models and use cases

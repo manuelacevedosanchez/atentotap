@@ -7,6 +7,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import com.example.atentotap.R
 
 @Composable
 fun ScoreBoard(
@@ -20,7 +22,7 @@ fun ScoreBoard(
         horizontalArrangement = Arrangement.SpaceBetween,
     ) {
         Text(
-            text = "P1: $player1Score",
+            text = stringResource(id = R.string.game_player_score, 1, player1Score),
             style = MaterialTheme.typography.titleMedium,
             color = MaterialTheme.colorScheme.primary,
         )
@@ -32,7 +34,7 @@ fun ScoreBoard(
             )
         }
         Text(
-            text = "P2: $player2Score",
+            text = stringResource(id = R.string.game_player_score, 2, player2Score),
             style = MaterialTheme.typography.titleMedium,
             color = MaterialTheme.colorScheme.tertiary,
         )

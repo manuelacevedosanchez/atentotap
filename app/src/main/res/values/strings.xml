@@ -1,3 +1,39 @@
 <resources>
     <string name="app_name">Atentotap</string>
+    <string name="menu_title">AtentoTap</string>
+    <string name="menu_subtitle">Find the shared symbol before your opponent.</string>
+    <string name="menu_play">Play</string>
+    <string name="menu_how_to_play">How to Play</string>
+
+    <string name="mode_title">Game Mode</string>
+    <string name="mode_score">Score</string>
+    <string name="mode_time">Time</string>
+    <string name="mode_target_score">Target score</string>
+    <string name="mode_match_duration">Match duration</string>
+    <string name="mode_symbols_per_side">Symbols per side: %1$d</string>
+    <string name="mode_start_match">Start match</string>
+
+    <string name="how_to_title">How to Play</string>
+    <string name="how_to_rules">1) The screen is split in half.\n2) Top is Player 1, bottom is Player 2.\n3) Each half has 6 symbols.\n4) Exactly one symbol appears in both halves.\n5) Tap the shared symbol in your own area first to score.</string>
+    <string name="how_to_modes">In Score mode, first to the target wins. In Time mode, highest score when time ends wins.</string>
+
+    <string name="game_player_score">P%1$d: %2$d</string>
+    <string name="game_player_zone">Player %1$d</string>
+    <string name="game_target_score">Target: %1$d</string>
+    <string name="game_time">Time: %1$s</string>
+    <string name="game_round_locked">Round locked</string>
+
+    <string name="result_winner_player_1">Player 1 wins</string>
+    <string name="result_winner_player_2">Player 2 wins</string>
+    <string name="result_draw">Draw</string>
+    <string name="result_final_score">Final score: %1$d - %2$d</string>
+    <string name="result_play_again">Play again</string>
+    <string name="result_back_to_menu">Back to menu</string>
+
+    <string name="common_back">Back</string>
+    <string name="common_seconds_short">%1$ds</string>
+
+    <string name="debug_language_title">Debug language</string>
+    <string name="debug_language_en">English</string>
+    <string name="debug_language_es">Spanish</string>
 </resources>

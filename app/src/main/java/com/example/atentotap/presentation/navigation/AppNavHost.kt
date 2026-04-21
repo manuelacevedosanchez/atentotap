@@ -1,12 +1,19 @@
 package com.example.atentotap.presentation.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.atentotap.BuildConfig
+import com.example.atentotap.core.localization.DebugLocaleManager
 import com.example.atentotap.domain.model.Winner
 import com.example.atentotap.presentation.screens.game.GameRoute
 import com.example.atentotap.presentation.screens.howto.HowToPlayScreen
@@ -27,9 +34,22 @@ fun AppNavHost(
         modifier = modifier,
     ) {
         composable(route = AppDestination.Menu.route) {
+            val context = LocalContext.current
+            var selectedLanguageTag by remember {
+                mutableStateOf(DebugLocaleManager.currentLanguageTag(context))
+            }
+
             MenuScreen(
                 onPlayClick = { navController.navigate(AppDestination.ModeSelection.route) },
                 onHowToPlayClick = { navController.navigate(AppDestination.HowToPlay.route) },
+                showDebugLanguageSelector = BuildConfig.DEBUG,
+                selectedLanguageTag = selectedLanguageTag,
+                onLanguageSelected = { languageTag ->
+                    if (languageTag != selectedLanguageTag) {
+                        DebugLocaleManager.applyAndPersist(context, languageTag)
+                        selectedLanguageTag = languageTag
+                    }
+                },
             )
         }
 
@@ -96,12 +116,9 @@ fun AppNavHost(
             val valueArg = backStackEntry.arguments?.getInt("value") ?: 5
 
             ResultScreen(
-                winnerText = when (winner) {
-                    Winner.PLAYER_1 -> "Player 1 wins"
-                    Winner.PLAYER_2 -> "Player 2 wins"
-                    Winner.DRAW -> "Draw"
-                },
-                scoreText = "Final score: $player1Score - $player2Score",
+                winner = winner,
+                player1Score = player1Score,
+                player2Score = player2Score,
                 onPlayAgain = {
                     navController.navigate(AppDestination.Game.createRoute(modeArg, valueArg)) {
                         popUpTo(AppDestination.ModeSelection.route)

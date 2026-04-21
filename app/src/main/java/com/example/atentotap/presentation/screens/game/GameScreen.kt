@@ -19,8 +19,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.atentotap.R
 import com.example.atentotap.data.generators.RoundGenerator
 import com.example.atentotap.domain.model.GameMode
 import com.example.atentotap.domain.model.Player
@@ -92,8 +94,11 @@ private fun GameScreen(
     modifier: Modifier = Modifier,
 ) {
     val timerText = when (val mode = uiState.mode) {
-        is GameMode.Score -> "Target: ${mode.targetScore}"
-        is GameMode.Time -> "Time: ${uiState.remainingTimeSeconds.toClockText()}"
+        is GameMode.Score -> stringResource(id = R.string.game_target_score, mode.targetScore)
+        is GameMode.Time -> stringResource(
+            id = R.string.game_time,
+            uiState.remainingTimeSeconds.toClockText(),
+        )
     }
 
     Column(
@@ -114,12 +119,12 @@ private fun GameScreen(
             horizontalArrangement = Arrangement.End,
         ) {
             OutlinedButton(onClick = onBackClick) {
-                Text("Back")
+                Text(text = stringResource(id = R.string.common_back))
             }
         }
 
         PlayerZone(
-            title = "Player 1",
+            title = stringResource(id = R.string.game_player_zone, 1),
             feedback = uiState.player1Feedback,
             symbols = uiState.topSymbols,
             onSymbolTap = onTopSymbolTap,
@@ -136,7 +141,7 @@ private fun GameScreen(
         )
 
         PlayerZone(
-            title = "Player 2",
+            title = stringResource(id = R.string.game_player_zone, 2),
             feedback = uiState.player2Feedback,
             symbols = uiState.bottomSymbols,
             onSymbolTap = onBottomSymbolTap,
@@ -185,7 +190,7 @@ private fun PlayerZone(
 
         if (!enabled) {
             Text(
-                text = "Round locked",
+                text = stringResource(id = R.string.game_round_locked),
                 style = MaterialTheme.typography.bodySmall,
                 color = Color.White.copy(alpha = 0.7f),
                 modifier = Modifier.align(Alignment.CenterHorizontally),

@@ -10,7 +10,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.atentotap.R
 
 @Composable
 fun HowToPlayScreen(
@@ -24,19 +26,15 @@ fun HowToPlayScreen(
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         Text(
-            text = "How to Play",
+            text = stringResource(id = R.string.how_to_title),
             style = MaterialTheme.typography.headlineMedium,
         )
         Text(
-            text = "1) The screen is split in half.\n" +
-                "2) Top is Player 1, bottom is Player 2.\n" +
-                "3) Each half has 6 symbols.\n" +
-                "4) Exactly one symbol appears in both halves.\n" +
-                "5) Tap the shared symbol in your own area first to score.",
+            text = stringResource(id = R.string.how_to_rules),
             style = MaterialTheme.typography.bodyLarge,
         )
         Text(
-            text = "In Score mode, first to the target wins. In Time mode, highest score when time ends wins.",
+            text = stringResource(id = R.string.how_to_modes),
             style = MaterialTheme.typography.bodyMedium,
         )
 
@@ -44,7 +42,7 @@ fun HowToPlayScreen(
             onClick = onBackClick,
             modifier = Modifier.fillMaxWidth(),
         ) {
-            Text("Back")
+            Text(text = stringResource(id = R.string.common_back))
         }
     }
 }
